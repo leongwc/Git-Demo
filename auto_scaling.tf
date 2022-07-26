@@ -8,6 +8,12 @@ resource "aws_launch_configuration" "aws_autoscale_conf" {
   instance_type = "t2.micro"
   # Defining the Key that will be used to access the AWS EC2 instance
   key_name = "automateinfra"
+
+  ebs_block_device {
+    delete_on_termination = true
+    device_name           = "<ebs_device_name>"
+    encrypted             = true
+  }
 }
 
 # Creating the autoscaling group within us-east-1a availability zone
